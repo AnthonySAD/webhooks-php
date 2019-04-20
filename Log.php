@@ -9,16 +9,15 @@
 class Log
 {
 
+    private $logName;
+    private $content = '';
+    private $dir;
 
-    private $file;
 
-    public function __construct($projectName)
+    public function __construct($logName, $dir)
     {
-        if (!file_exists('../logs')){
-            mkdir ('../logs',0777,true);
-        }
-
-        $this->file = fopen('../logs/ ' . $projectName . '.log', "a+");
+        $this->logName = $logName;
+        $this->dir = rtrim($dir, '/') . '/';
     }
 
     public function write( $data )
@@ -26,26 +25,38 @@ class Log
         if (!is_string($data)){
             $data = json_encode($data);
         }
+        $this->content .= $data . PHP_EOL;
+    }
 
-        fwrite($this->file, $data . PHP_EOL);
-
+    public function writeError( $data )
+    {
+        $this->write($data);
+        $this->logName = 'error';
     }
 
     public function endLine()
     {
-        $this->write(PHP_EOL . '==========================================' . PHP_EOL);
+        $this->write(PHP_EOL . PHP_EOL);
     }
 
     public function writeRequest()
     {
-        $this->write('Request on ['.date("Y-m-d H:i:s").'] from ['.$_SERVER['REMOTE_ADDR'].']');
+        $this->write('-----Request on ['.date("Y-m-d H:i:s").'] from ['.$_SERVER['REMOTE_ADDR'].']-----');
     }
 
 
     public function __destruct()
     {
+        if (!file_exists($this->dir)){
+            mkdir ($this->dir,0777,true);
+        }
+
+        $filePath = $this->dir . $this->logName . '.log';
+
+        $file = fopen($filePath, 'a+');
         $this->endLine();
-        fclose($this->file);
+        fwrite($file, $this->content);
+        fclose($file);
     }
 
 }
