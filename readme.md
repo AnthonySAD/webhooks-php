@@ -2,7 +2,7 @@
 
 该项目是用php编写的脚本。核心功能为：当github上的仓库有新的push时，自动拉取代码。
 
-## 安排方法
+## 使用方法
 
 1. 拉取本项目
 
@@ -41,7 +41,7 @@ git clone git@github.com:AnthonySAD/webhooks-php.git
 
 #### logs_dir
 
-配置日志的目录地址，请务必使用绝对路径。如果填空，则不记录日志。
+配置日志的目录地址，请务必使用绝对路径。如果填false，则不记录日志。
 
 #### server_user_name
 
@@ -49,7 +49,7 @@ git clone git@github.com:AnthonySAD/webhooks-php.git
 
 #### record_request_data
 
-启用该配置后，日志会记录所有的post payload
+启用该配置后，日志会记录所有的post payload数据
 
 #### only_pull_master
 
