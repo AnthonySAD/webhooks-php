@@ -21,7 +21,7 @@ class Kernel
 
         $this->initLog($config['logs_dir']);
 
-        $this->initProject($config['project']);
+        $this->initProject($config['projects']);
 
         $this->initUserName($config['server_user_name']);
 

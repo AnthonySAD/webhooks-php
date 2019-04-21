@@ -47,6 +47,10 @@ class Log
 
     public function __destruct()
     {
+        if(!$this->dir){
+            return false;
+        }
+        
         if (!file_exists($this->dir)){
             mkdir ($this->dir,0777,true);
         }

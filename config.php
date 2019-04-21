@@ -9,9 +9,9 @@
 
 return [
 
+    //the logs directory
     //must use absolute path
-    'logs_dir'   => '/path/of/the/logs',
-
+    'logs_dir'   => '/path/of/this/webhooks/project/logs',
 
     //php user name and group
     'server_user_name' => [
@@ -30,18 +30,18 @@ return [
     'default_project_name'  => 'default',
 
     //projects name and secret which set in github
-    'project' => [
+    'projects' => [
         'default'   => [
             'dir'       => '/home/www/default',
             'secret'    => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
         ],
 //        'project1' => [
-//            'dir'       => '/home/www/project1',
-//            'secret'    => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+//            'dir'       => '/root/path/of/your/project',
+//            'secret'    => 'the secret setting in your repository',
 //        ],
 //        'project2' => [
-//            'dir'       => '/home/www/project2',
-//            'secret'    => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+//            'dir'       => '/root/path/of/your/project',
+//            'secret'    => 'the secret setting in your repository',
 //        ],
     ],
 
